@@ -410,7 +410,7 @@
       </a>
 
       <audio ref="player">
-        <source src="https://c15.radioboss.fm:18531/stream" type="audio/mpeg" />
+        <source :src="info.data.streamingUrl" type="audio/mpeg" />
       </audio>
     </a>
 
