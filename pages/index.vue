@@ -313,7 +313,7 @@
           grid grid-cols-4
           max-w-4xl
         ">
-          <a href="https://www.facebook.com/LFM88.5" class="text-libya-blue-400 hover:text-pink-500 mx-auto">
+          <a :href="this.socialMediaLinks.facebook" class="text-libya-blue-400 hover:text-pink-500 mx-auto">
             <span class="sr-only">Facebook</span>
             <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path fill-rule="evenodd"
@@ -322,7 +322,7 @@
             </svg>
           </a>
 
-          <a href="https://www.instagram.com/libya_fm88.5/" class="text-libya-blue-400 hover:text-pink-500 mx-auto">
+          <a :href="this.socialMediaLinks.instagram" class="text-libya-blue-400 hover:text-pink-500 mx-auto">
             <span class="sr-only">Instagram</span>
             <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path fill-rule="evenodd"
@@ -331,14 +331,14 @@
             </svg>
           </a>
 
-          <a href="https://twitter.com/LIBYA__FM" class="text-libya-blue-400 hover:text-pink-500 mx-auto">
+          <a :href="this.socialMediaLinks.twitter" class="text-libya-blue-400 hover:text-pink-500 mx-auto">
             <span class="sr-only">Twitter</span>
             <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path
                 d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
             </svg>
           </a>
-          <a href="https://www.tiktok.com/en/" class="text-libya-blue-400 hover:text-pink-500 mx-auto">
+          <a :href="this.socialMediaLinks.tiktok" class="text-libya-blue-400 hover:text-pink-500 mx-auto">
             <span class="sr-only">Tiktok</span>
             <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path fill-rule="evenodd"
@@ -796,7 +796,7 @@
             lg:mt-16
           ">
           <div class="flex content-center space-x-6 space-x-reverse md:order-2">
-            <a href="https://www.facebook.com/LFM88.5" class="text-libya-blue-400 hover:text-pink-500">
+            <a :href="this.socialMediaLinks.facebook" class="text-libya-blue-400 hover:text-pink-500">
               <span class="sr-only">Facebook</span>
               <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path fill-rule="evenodd"
@@ -805,7 +805,7 @@
               </svg>
             </a>
 
-            <a href="https://www.instagram.com/libya_fm88.5/" class="text-libya-blue-400 hover:text-pink-500">
+            <a :href="this.socialMediaLinks.instagram" class="text-libya-blue-400 hover:text-pink-500">
               <span class="sr-only">Instagram</span>
               <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path fill-rule="evenodd"
@@ -814,14 +814,14 @@
               </svg>
             </a>
 
-            <a href="https://twitter.com/LIBYA__FM" class="text-libya-blue-400 hover:text-pink-500">
+            <a :href="this.socialMediaLinks.twitter" class="text-libya-blue-400 hover:text-pink-500">
               <span class="sr-only">Twitter</span>
               <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path
                   d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
               </svg>
             </a>
-            <a href="https://www.tiktok.com/en/" class="text-libya-blue-400 hover:text-pink-500">
+            <a :href="this.socialMediaLinks.tiktok" class="text-libya-blue-400 hover:text-pink-500">
               <span class="sr-only">Tiktok</span>
               <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path
@@ -848,6 +848,12 @@ export default {
       playerState: "Play",
       isMenuOpen: false,
       info: null,
+      socialMediaLinks: {
+        facebook: null,
+        twitter: null,
+        instagram: null,
+        tiktok: null,
+      },
     };
   },
   methods: {
@@ -860,17 +866,33 @@ export default {
         this.playerState = "Play";
       }
     },
-    modifyImageUrl(url) {
-      // Add the prefix to the image URL
-      return `https://api.libyafm.fm${url}`;
-    },
+    // modifyImageUrl(url) {
+    //   // Add the prefix to the image URL
+    //   return `https://api.libyafm.fm${url}`;
+    // },
+    createLink(data) {
+      // data is an array of objects loop through it and return the url of the platformName
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].platformName === "Facebook") {
+          this.socialMediaLinks.facebook = data[i].URL;
+      } else if (data[i].platformName === "Twitter") {
+          this.socialMediaLinks.twitter = data[i].URL;
+      } else if (data[i].platformName === "Instagram") {
+          this.socialMediaLinks.instagram = data[i].URL;
+      } else if (data[i].platformName === "tiktok") {
+          this.socialMediaLinks.tiktok = data[i].URL;
+      }
+      }
   },
-  computed: {
-    modifiedImageUrl() {
-      return this.modifyImageUrl(url);
-    },
   },
+  // computed: {
+  //   modifiedImageUrl() {
+  //     return this.modifyImageUrl(url);
+  //   },
+  // },
   mounted() { 
+  //  this.createLink(this.info);
+
   },
   beforeMount() {
     // get
@@ -879,8 +901,10 @@ export default {
 
     axios.get("https://api.libyafm.fm/libya-fm").then((resp) => {
       this.info = resp;
-      this.$refs.player.play();
       console.log(this.info.data);
+     this.createLink(this.info.data.socialMediaLinks);
+      this.$refs.player.play();
+      
     });
   },
 };
