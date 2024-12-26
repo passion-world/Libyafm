@@ -1,14 +1,13 @@
 <template>
   <div class="max-h-screen bg-madinati-red-500" dir="rtl">
-   
-    <div class="max-h-screen  bg-zinc-900">
-  <Nuxt />
+    <div class="max-h-screen bg-zinc-900">
+      <Nuxt />
 
-<!--
-  This example requires Tailwind CSS v2.0+ 
-  
+      <!--
+  This example requires Tailwind CSS v2.0+
+
   This example requires some changes to your config:
-  
+
   ```
   // tailwind.config.js
   module.exports = {
@@ -20,8 +19,6 @@
   }
   ```
 -->
-
- 
     </div>
   </div>
 </template>
@@ -33,7 +30,7 @@ export default {
   data() {
     return {
       playerState: "Play",
-      isMenuOpen : false,
+      isMenuOpen: false,
     };
   },
   methods: {
