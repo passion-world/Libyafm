@@ -1,0 +1,11 @@
+{
+  "buildCommand": "npm link tailwindcss & npm run build",
+  "devCommand": "npm run dev",
+  "framework": "nuxtjs",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ]
+}
