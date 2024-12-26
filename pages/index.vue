@@ -1002,13 +1002,13 @@ export default {
       // data is an array of objects loop through it and return the url of the platformName
       for (let i = 0; i < data.length; i++) {
         if (data[i].platformName === "Facebook") {
-          this.socialMediaLinks?.facebook = data[i].URL;
+          this.socialMediaLinks.facebook = data[i].URL;
         } else if (data[i].platformName === "Twitter") {
-          this.socialMediaLinks?.twitter = data[i].URL;
+          this.socialMediaLinks.twitter = data[i].URL;
         } else if (data[i].platformName === "Instagram") {
-          this.socialMediaLinks?.instagram = data[i].URL;
+          this.socialMediaLinks.instagram = data[i].URL;
         } else if (data[i].platformName === "tiktok") {
-          this.socialMediaLinks?.tiktok = data[i].URL;
+          this.socialMediaLinks.tiktok = data[i].URL;
         }
       }
     },
