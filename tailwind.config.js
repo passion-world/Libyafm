@@ -7,9 +7,8 @@ const round = (num) =>
 const em = (px, base) => `${round(px / base)}em`
 
 module.exports = {
-  purge: [],
-  purge: ["./src/**/*.{vue,js,ts,jsx,tsx}"],
-  darkMode: false, // or 'media' or 'class'
+  content: [],
+  content: ["./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
     extend: {
       fontFamily: {
@@ -279,10 +278,6 @@ module.exports = {
         },
       },
     },
-
-  },
-  variants: {
-    extend: {},
   },
   plugins: [    require('@tailwindcss/aspect-ratio'),require("tailwindcss-flip"), require('@tailwindcss/typography')],
 };
