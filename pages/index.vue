@@ -299,7 +299,7 @@ const carouselConfig = {
           class="w-full block py-5 text-center items-center mx-auto grid grid-cols-4 max-w-4xl"
         >
           <a
-            :href="this.socialMediaLinks.facebook"
+            :href="this.socialMediaLinks.facebook || '/'"
             class="text-libya-blue-400 hover:text-pink-500 mx-auto"
           >
             <span class="sr-only">Facebook</span>
@@ -318,7 +318,7 @@ const carouselConfig = {
           </a>
 
           <a
-            :href="this.socialMediaLinks.instagram"
+            :href="this.socialMediaLinks?.instagram || '/'"
             class="text-libya-blue-400 hover:text-pink-500 mx-auto"
           >
             <span class="sr-only">Instagram</span>
@@ -337,7 +337,7 @@ const carouselConfig = {
           </a>
 
           <a
-            :href="this.socialMediaLinks.twitter"
+            :href="this.socialMediaLinks.twitter || '/'"
             class="text-libya-blue-400 hover:text-pink-500 mx-auto"
           >
             <span class="sr-only">Twitter</span>
@@ -353,7 +353,7 @@ const carouselConfig = {
             </svg>
           </a>
           <a
-            :href="this.socialMediaLinks.tiktok"
+            :href="this.socialMediaLinks.tiktok || '/'"
             class="text-libya-blue-400 hover:text-pink-500 mx-auto"
           >
             <span class="sr-only">Tiktok</span>
@@ -881,7 +881,7 @@ const carouselConfig = {
         >
           <div class="flex content-center space-x-6 space-x-reverse md:order-2">
             <a
-              :href="this.socialMediaLinks.facebook"
+              :href="this.socialMediaLinks.facebook || '/'"
               class="text-libya-blue-400 hover:text-pink-500"
             >
               <span class="sr-only">Facebook</span>
@@ -900,7 +900,7 @@ const carouselConfig = {
             </a>
 
             <a
-              :href="this.socialMediaLinks.instagram"
+              :href="this.socialMediaLinks.instagram || '/'"
               class="text-libya-blue-400 hover:text-pink-500"
             >
               <span class="sr-only">Instagram</span>
@@ -919,7 +919,7 @@ const carouselConfig = {
             </a>
 
             <a
-              :href="this.socialMediaLinks.twitter"
+              :href="this.socialMediaLinks.twitter || '/'"
               class="text-libya-blue-400 hover:text-pink-500"
             >
               <span class="sr-only">Twitter</span>
@@ -935,7 +935,7 @@ const carouselConfig = {
               </svg>
             </a>
             <a
-              :href="this.socialMediaLinks.tiktok"
+              :href="this.socialMediaLinks.tiktok || '/'"
               class="text-libya-blue-400 hover:text-pink-500"
             >
               <span class="sr-only">Tiktok</span>
