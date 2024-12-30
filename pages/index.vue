@@ -4,26 +4,16 @@ import { VueAudioMotionAnalyzer } from "vite-plugin-vue-audiomotion";
 </script>
 
 <template>
-  <div class="bg-white" v-if="info != null">
+  <div class="bg-[#0B1834]" v-if="info != null">
     <header>
       <div class="relative">
         <div
-          class="flex justify-between items-center max-w-7xl mx-auto px-4 py-6 sm:px-6 md:justify-start md:space-x-10 md:space-x-reverse lg:px-8"
+          class="fixed top-0 left-0 w-full flex bg-[#0B1834] z-10 bg-opacity-80 justify-between items-center mx-auto px-4 py-6 sm:px-6 md:justify-start md:space-x-10 md:space-x-reverse lg:px-8"
         >
-          <div class="flex justify-start lg:w-0 lg:flex-1">
-            <a href="#">
-              <span class="sr-only">Workflow</span>
-              <img
-                class="h-16 w-auto sm:h-16"
-                src="~/assets/libyafm-logo.svg"
-                alt=""
-              />
-            </a>
-          </div>
-          <div class="-mr-2 -my-2 md:hidden">
+          <div class="-mr-2 -my-2 md:hidden md:justify-between">
             <button
               type="button"
-              class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+              class="bg-[#0B1834] rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
               aria-expanded="false"
             >
               <span class="sr-only">Open menu</span>
@@ -46,52 +36,56 @@ import { VueAudioMotionAnalyzer } from "vite-plugin-vue-audiomotion";
             </button>
           </div>
 
+          <div>
+            <a
+              href="mailto:info@libyafm.fm"
+              class="ml-8 whitespace-nowrap inline-flex items-center justify-center bg-gradient-to-r from-libya-pink-500 to-libya-blue-500 bg-origin-border px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white hover:from-libya-blue-400 transition-all duration-300 ease-in-out hover:to-libya-pink-400"
+            >
+              تواصل معنا
+            </a>
+          </div>
           <div
             class="hidden md:flex items-center justify-end md:flex-1 lg:w-0 space-x-8 space-x-reverse"
           >
             <a
               href="#info"
-              class="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
+              class="whitespace-nowrap text-base font-semibold text-white hover:text-gray-300"
             >
               عن الراديو
             </a>
             <a
               href="#team"
-              class="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
+              class="whitespace-nowrap text-base font-semibold text-white hover:text-gray-300"
             >
               فـريقـنـا
             </a>
             <a
               href="#programs"
-              class="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
+              class="whitespace-nowrap text-base font-semibold text-white hover:text-gray-300"
             >
               البرامج
             </a>
             <a
               href="#flashes"
-              class="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
+              class="whitespace-nowrap text-base font-semibold text-white hover:text-gray-300"
             >
               الفلاشات
             </a>
-            <a
-              href="mailto:info@libyafm.fm"
-              class="ml-8 whitespace-nowrap inline-flex items-center justify-center bg-gradient-to-r from-libya-pink-500 to-libya-blue-500 bg-origin-border px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white hover:from-libya-blue-400 hover:to-libya-pink-400"
-            >
-              تواصل معنا
+          </div>
+          <div class="flex justify-end lg:w-0 lg:flex-1">
+            <a href="#">
+              <span class="sr-only">Workflow</span>
+              <img
+                style="object-fit: contain; width: 200px; height: 60px"
+                :src="
+                  'https://mobile.uob.edu.ly' + info.logo.formats.thumbnail.url
+                "
+                alt=""
+              />
             </a>
           </div>
         </div>
-
-        <!--
-        Mobile menu, show/hide based on mobile menu state.
-
-        Entering: "duration-200 ease-out"
-          From: "opacity-0 scale-95"
-          To: "opacity-100 scale-100"
-        Leaving: "duration-100 ease-in"
-          From: "opacity-100 scale-100"
-          To: "opacity-0 scale-95"
-      --></div>
+      </div>
     </header>
 
     <main>
@@ -99,105 +93,201 @@ import { VueAudioMotionAnalyzer } from "vite-plugin-vue-audiomotion";
       <div class="relative">
         <div class="absolute inset-x-0 bottom-0 h-1/2"></div>
 
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-          <div
-            class="relative shadow-xl sm:rounded-2xl sm:overflow-hidden bg-animated-2"
-            id="banner"
+        <div class="flex h-[1024px]">
+          <button
+            class="control-btn play-btn absolute opacity-80 hover:opacity-100 duration-200 transition-all ease-in-out"
+            style="
+              top: 541px;
+              left: calc(58.33% - 37.5px);
+              transform: translate(-calc(58.33% - 37.5px), -541px);
+            "
+            @click="togglePlay"
           >
-            <div
-              class="relative px-4 pt-32 sm:px-6 sm:pt-24 lg:pt-32 lg:px-8 flex justify-center items-center"
+            <svg
+              v-if="!isPlaying"
+              width="75"
+              height="75"
+              viewBox="0 0 100 100"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <img
-                style="object-fit: contain; width: 270px; height: 110px"
-                :src="
-                  'https://mobile.uob.edu.ly' + info.logo.formats.thumbnail.url
-                "
-                alt=""
-              />
-            </div>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
+              <path d="M37 28V75L73 51.5L37 28Z" fill="white" />
+            </svg>
+            <svg
+              v-else
+              width="75"
+              height="75"
+              viewBox="0 0 100 100"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect x="32" y="32" width="12" height="35" fill="white" />
+              <rect x="56" y="32" width="12" height="35" fill="white" />
+            </svg>
+          </button>
+          <div class="w-5/12">
+            <img class="w-[100%] h-[100%]" src="~/assets/sados.jpg" alt="" />
           </div>
+          <div class="w-7/12">
+            <div
+              class="flex-col text-start items-center max-w-[800px] px-32 py-60"
+            >
+              <p
+                class="text-8xl text-white font-semibold leading-[120px]"
+                v-motion="{
+                  initial: {
+                    x: -100,
+                    opacity: 0,
+                  },
+                  enter: {
+                    x: 0,
+                    opacity: 1,
+                  },
+                }"
+              >
+                استمع واستمتع مع ليبيا
+                <strong class="text-[#68FDF3]">اف ام</strong>
+              </p>
+              <div class="mt-10">
+                <p
+                  class="text-2xl ml-10 text-[#68FDF3] relative"
+                  @mouseenter="showArrow = true"
+                  @mouseleave="showArrow = false"
+                  v-motion="{
+                    initial: {
+                      x: -100,
+                      opacity: 0,
+                    },
+                    enter: {
+                      x: 0,
+                      opacity: 1,
+                    },
+                  }"
+                >
+                  <span
+                    v-if="showArrow"
+                    class="absolute inline-block -mr-7 my-2"
+                    v-motion="{
+                      initial: { x: -10, opacity: 0 },
+                      enter: { x: 0, opacity: 1 },
+                    }"
+                  >
+                    <svg
+                      viewBox="0 0 48 48"
+                      fill="#68FDF3"
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-6 h-6"
+                    >
+                      <path
+                        d="M12 12L24 24L12 36"
+                        stroke="#68FDF3"
+                        stroke-width="4"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      ></path>
+                      <path
+                        d="M24 12L36 24L24 36"
+                        stroke="#68FDF3"
+                        stroke-width="4"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      ></path>
+                    </svg>
+                  </span>
+                  دعنا نذهب للموسيقى
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="relative shadow-xl sm:overflow-hidden bg-[#071124]"
+          id="banner"
+        >
+          <div class="w-full py-10 text-center mx-auto relative z-0">
+            <!-- Play/Pause Button -->
+            <div class="player-controls mx-auto">
+              <button
+                class="control-btn w-[50px] h-[50px] flex items-center justify-center pr-1 opacity-80 hover:opacity-100 duration-200 transition-all ease-in-out"
+                @click="rewind"
+              >
+                <svg
+                  fill="#ffffff"
+                  viewBox="0 0 28 28"
+                  class="w-6 h-6"
+                  xmlns="http://www.w3.org/2000/svg"
+                  stroke="#ffffff"
+                >
+                  <path d="M2 4v24l10.5-12L2 4zm12 0v24l10.5-12L14 4z" />
+                </svg>
+              </button>
+              <button
+                class="control-btn play-btn opacity-80 hover:opacity-100 duration-200 transition-all ease-in-out"
+                @click="togglePlay"
+              >
+                <svg
+                  v-if="!isPlaying"
+                  width="75"
+                  height="75"
+                  viewBox="0 0 100 100"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M37 28V75L73 51.5L37 28Z" fill="white" />
+                </svg>
+                <svg
+                  v-else
+                  width="75"
+                  height="75"
+                  viewBox="0 0 100 100"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect x="32" y="32" width="12" height="35" fill="white" />
+                  <rect x="56" y="32" width="12" height="35" fill="white" />
+                </svg>
+              </button>
+              <button
+                class="control-btn w-[50px] h-[50px] flex items-center justify-center pl-1 opacity-80 hover:opacity-100 duration-200 transition-all ease-in-out"
+                @click="forward"
+              >
+                <svg
+                  fill="#ffffff"
+                  viewBox="0 0 28 28"
+                  class="w-6 h-6"
+                  xmlns="http://www.w3.org/2000/svg"
+                  stroke="#ffffff"
+                >
+                  <path
+                    d="M27.136,3.736C27.508,3.332,28,3.45,28,4v24c0,0.55-0.492,0.668-0.864,0.264L16.449,16.736 c-0.372-0.405-0.325-1.068,0.047-1.473L27.136,3.736z"
+                  ></path>
+                  <path
+                    d="M14.297,3.736C14.669,3.332,15,3.45,15,4v24c0,0.55-0.331,0.668-0.703,0.264L3.69,16.736 c-0.372-0.405-0.365-1.068,0.007-1.473L14.297,3.736z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Audio Element -->
+            <audio ref="audios" id="audio" crossorigin="anonymous">
+              <source :src="info.streamingUrl" type="audio/mpeg" />
+            </audio>
+            <div class="px-20 mt-4">
+              <VueAudioMotionAnalyzer :options="options" :source="audio" />
+            </div>
+          </div>
+          <div
+            class="relative px-4 pt-32 sm:px-6 sm:pt-24 lg:pt-32 lg:px-8 flex justify-center items-center"
+          ></div>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
         </div>
       </div>
     </main>
-
-    <div
-      class="audio-player w-full py-5 text-center mx-auto relative z-0 max-w-7xl"
-    >
-      <!-- Play/Pause Button -->
-      <div class="player-controls mx-auto">
-        <button
-          class="control-btn w-[50px] h-[50px] flex items-center justify-center pr-1"
-          @click="rewind"
-        >
-          <svg
-            fill="#ffffff"
-            viewBox="0 0 28 28"
-            class="w-6 h-6"
-            xmlns="http://www.w3.org/2000/svg"
-            stroke="#ffffff"
-          >
-            <path d="M2 4v24l10.5-12L2 4zm12 0v24l10.5-12L14 4z" />
-          </svg>
-        </button>
-        <button class="control-btn play-btn" @click="togglePlay">
-          <svg
-            v-if="!isPlaying"
-            width="75"
-            height="75"
-            viewBox="0 0 100 100"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M37 28V75L73 51.5L37 28Z" fill="white" />
-            <circle cx="50" cy="50" r="49.5" stroke="white" />
-          </svg>
-          <svg
-            v-else
-            width="75"
-            height="75"
-            viewBox="0 0 100 100"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect x="32" y="32" width="12" height="35" fill="white" />
-            <rect x="56" y="32" width="12" height="35" fill="white" />
-            <circle cx="50" cy="50" r="49.5" stroke="white" />
-          </svg>
-        </button>
-        <button
-          class="control-btn w-[50px] h-[50px] flex items-center justify-center pl-1"
-          @click="forward"
-        >
-          <svg
-            fill="#ffffff"
-            viewBox="0 0 28 28"
-            class="w-6 h-6"
-            xmlns="http://www.w3.org/2000/svg"
-            stroke="#ffffff"
-          >
-            <path
-              d="M27.136,3.736C27.508,3.332,28,3.45,28,4v24c0,0.55-0.492,0.668-0.864,0.264L16.449,16.736 c-0.372-0.405-0.325-1.068,0.047-1.473L27.136,3.736z"
-            ></path>
-            <path
-              d="M14.297,3.736C14.669,3.332,15,3.45,15,4v24c0,0.55-0.331,0.668-0.703,0.264L3.69,16.736 c-0.372-0.405-0.365-1.068,0.007-1.473L14.297,3.736z"
-            ></path>
-          </svg>
-        </button>
-      </div>
-
-      <!-- Audio Element -->
-      <audio ref="audios" id="audio" crossorigin="anonymous">
-        <source :src="info.streamingUrl" type="audio/mpeg" />
-      </audio>
-      <div class="px-20 mt-4">
-        <VueAudioMotionAnalyzer :options="options" :source="audio" />
-      </div>
-    </div>
   </div>
 </template>
 // If you are using PurgeCSS, make sure to whitelist the carousel CSS classes
@@ -211,6 +301,7 @@ export default {
   data() {
     return {
       isPlaying: false,
+      showArrow: false,
       currentTime: 0,
       duration: 0,
       playerState: "Play",
@@ -227,7 +318,7 @@ export default {
         loRes: false,
         mode: 3,
         barSpace: 0.1,
-        gradientLeft: "steelblue",
+        gradientLeft: "rainbow",
         ledBars: false,
         lumiBars: false,
         outlineBars: false,
@@ -697,10 +788,6 @@ body {
 .box5 {
   animation-name: quiet;
 }
-.audio-player {
-  font-family: "My Font", sans-serif;
-  color: #ba3167;
-}
 .player-controls {
   display: flex;
   justify-content: center;
@@ -709,7 +796,6 @@ body {
 }
 .control-btn {
   background-color: #ba3167;
-  color: white;
   border: none;
   border-radius: 50%;
   width: 50px;
