@@ -93,14 +93,10 @@ import { VueAudioMotionAnalyzer } from "vite-plugin-vue-audiomotion";
       <div class="relative">
         <div class="absolute inset-x-0 bottom-0 h-1/2"></div>
 
-        <div class="flex h-[1024px]">
+        <div class="flex xl:h-[900px] 2xl:h-[1024px]">
           <button
-            class="control-btn play-btn absolute opacity-80 hover:opacity-100 duration-200 transition-all ease-in-out"
-            style="
-              top: 541px;
-              left: calc(58.33% - 37.5px);
-              transform: translate(-calc(58.33% - 37.5px), -541px);
-            "
+            class="control-btn play-btn absolute opacity-80 hover:opacity-100 duration-200 transition-all ease-in-out z-10 invisible lg:visible"
+            id="hero-button"
             @click="togglePlay"
           >
             <svg
@@ -110,6 +106,7 @@ import { VueAudioMotionAnalyzer } from "vite-plugin-vue-audiomotion";
               viewBox="0 0 100 100"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              class="hidden lg:block"
             >
               <path d="M37 28V75L73 51.5L37 28Z" fill="white" />
             </svg>
@@ -120,49 +117,45 @@ import { VueAudioMotionAnalyzer } from "vite-plugin-vue-audiomotion";
               viewBox="0 0 100 100"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              class="hidden lg:block"
             >
               <rect x="32" y="32" width="12" height="35" fill="white" />
               <rect x="56" y="32" width="12" height="35" fill="white" />
             </svg>
           </button>
-          <div class="w-5/12">
+          <div class="w-[600px] 2xl:w-[740px] min-w-[600px] hidden lg:block">
             <img class="w-[100%] h-[100%]" src="~/assets/sados.jpg" alt="" />
           </div>
-          <div class="w-7/12">
+          <div class="">
             <div
-              class="flex-col text-start items-center max-w-[800px] px-32 py-60"
+              class="flex-col text-start items-center max-w-[800px] px-16 py-40 md:py-56 xl:px-32 xl:py-60"
+              v-motion="{
+                initial: {
+                  x: -100,
+                  opacity: 0,
+                },
+                enter: {
+                  x: 0,
+                  opacity: 1,
+                },
+                transition: {
+                  duration: 500,
+                  type: 'keyframes',
+                  ease: 'easeIn',
+                },
+              }"
             >
               <p
-                class="text-8xl text-white font-semibold leading-[120px]"
-                v-motion="{
-                  initial: {
-                    x: -100,
-                    opacity: 0,
-                  },
-                  enter: {
-                    x: 0,
-                    opacity: 1,
-                  },
-                }"
+                class="text-6xl xl:text-8xl text-white font-semibold leading-[80px] xl:leading-[140px]"
               >
                 استمع واستمتع مع ليبيا
                 <strong class="text-[#68FDF3]">اف ام</strong>
               </p>
               <div class="mt-10">
-                <p
+                <a
                   class="text-2xl ml-10 text-[#68FDF3] relative"
                   @mouseenter="showArrow = true"
                   @mouseleave="showArrow = false"
-                  v-motion="{
-                    initial: {
-                      x: -100,
-                      opacity: 0,
-                    },
-                    enter: {
-                      x: 0,
-                      opacity: 1,
-                    },
-                  }"
                 >
                   <span
                     v-if="showArrow"
@@ -195,7 +188,7 @@ import { VueAudioMotionAnalyzer } from "vite-plugin-vue-audiomotion";
                     </svg>
                   </span>
                   دعنا نذهب للموسيقى
-                </p>
+                </a>
               </div>
             </div>
           </div>
@@ -814,5 +807,17 @@ body {
   width: 100%;
   background: linear-gradient(to right, #ba3167 0%, #d6d6d6 100%);
   border-radius: 10px;
+}
+#hero-button {
+  top: 541px;
+  left: calc(100% - 777.5px);
+  transform: translate(-calc(100% - 777.5px), -741px);
+}
+@media (max-width: 1536px) {
+  #hero-button {
+    top: 450px; /* Adjust for xl */
+    left: calc(100% - 637.5px); /* Adjust for xl */
+    transform: translate(-calc(100% - 637.5px), -650px); /* Adjust for xl */
+  }
 }
 </style>
